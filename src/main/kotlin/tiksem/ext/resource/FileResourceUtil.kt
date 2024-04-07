@@ -9,7 +9,7 @@ object FileResourceUtil {
     }
 
     fun getResourceAsText(path: String): String? {
-        return classLoader.getResource(path)?.readText()
+        return classLoader.getResource(path)?.re\adText()
     }
 
     fun getResourceAsInputStream(path: String): InputStream? {
