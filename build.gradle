@@ -2,6 +2,34 @@ plugins {
     id 'java'
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm' version '1.9.10'
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.tiksem.kotlinspirit'
+            artifactId = 'release'
+            version = "1.2.0"
+            from components.java
+
+            pom {
+                name = 'KotlinUtils'
+                description = 'Generic Kotlin Utils'
+            }
+
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/tiksem/KotlinUtils")
+                    credentials {
+                        username = "tiksem"
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+                }
+            }
+        }
+    }
 }
 
 repositories {
