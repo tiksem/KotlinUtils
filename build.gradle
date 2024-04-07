@@ -1,16 +1,12 @@
 plugins {
     id 'java'
     id 'java-library'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.10'
 }
 
 repositories {
     mavenCentral()
     maven { url = URI.create("https://jitpack.io") }
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(11))
 }
 
 dependencies {
