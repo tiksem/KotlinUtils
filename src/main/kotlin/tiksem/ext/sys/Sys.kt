@@ -10,8 +10,12 @@ data class CommandResult(
 )
 
 object Sys {
-    suspend fun executeCommand(command: String): CommandResult = withContext(Dispatchers.IO) {
-        val p = Runtime.getRuntime().exec(command)
+    suspend fun executeCommand(command: String, useBash: Boolean = false): CommandResult = withContext(Dispatchers.IO) {
+        val p = if (useBash) {
+            ProcessBuilder("bash", "-c", command).start()
+        } else {
+            Runtime.getRuntime().exec(command)
+        }
         handleCommandResult(p)
     }
 
